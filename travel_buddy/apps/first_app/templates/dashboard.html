@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <title>Add Review</title>
+        {% load static %}
+    </head>
+    <style>
+        body {
+            padding:3%;
+        }
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    input {
+        margin: 1%;
+        padding: 1% 2%;
+    }
+    </style>
+    <body>
+        <div id="wrapper">
+            <a href="{% url 'first_app:index' %}">Logout</a>
+            <h1>Hello,{{ users.first_name }}!</h1>
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <P>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="recent">
+            <h3>Your Trip Schedule!</h3>
+            <table>
+                <tr>
+                    <td>Destination</td>
+                    <td>Travel Start Date</td>
+                    <td>Travel End Date</td>
+                    <td>Plan</td>
+                </tr>
+                {% for trip in trips %}
+                <tr>
+                    <td><a href="{% url 'second_app:destination' %}"</a>{{ trip.destination_name }}</td>
+                    <td>{{ trip.travel_from }}</td>
+                    <td>{{ trip.travel_to }}</td>
+                    <td>{{ trip.description }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="other">
+            <h3>Other Users Travel Plans!</h3>
+            <table>
+                    <tr>
+                        <td>Name</td>
+                        <td>Destination</td>
+                        <td>Travel Start Date</td>
+                        <td>Travel End Date</td>
+                        <td>Do you want to join?</td>
+                    </tr>
+                    {% for trip in all_users %}
+                    <tr>
+                        <td>{{ trip.User.first_name }}</td>
+                        <td><a href="{% url 'first_app:adddestination' id=trip.id  %}"</a>{{ trip.destination_name }}</td>
+                        <td>{{ trip.travel_from }}</td>
+                        <td>{{ trip.travel_to }}</td>
+                        <td>
+                            <a href="{% url 'first_app:adddestination' id=trip.id  %}">Join</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+        </div>
+        <div id="additem">
+            <a href="{% url 'second_app:index' %}">Add Travel Plan</a>
+        </div>
+        </div>
+    </body>
+</html>

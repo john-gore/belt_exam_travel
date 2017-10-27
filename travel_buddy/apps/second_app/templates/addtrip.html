@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <title>Items</title>
+    </head>
+    <body>
+            <a href="{% url 'first_app:success' %}">Home</a>
+            <a href="{% url 'first_app:index' %}">Logout</a>
+        <h1>Add a Trip</h1>
+            <form action="add_trip" method='POST'>
+                {% csrf_token %}
+                <h4>Destination:<input type="text box" name="destination"></h4>
+                <h4>Description: <input type="text box" name="description"></h4>
+                <h4>Travel Date From: <input type="date" class="form-control" id="date" value="{{placement.date|date:"Y-m-d" }}" name = "travel_from"></h4>
+                <h4>Travel Date To: <input type="date" class="form-control" id="date" value="{{placement.date|date:"Y-m-d" }}" name = "travel_to"></h4>
+                <input type="submit" value="Add">
+            </form>
+    </body>
+</html>

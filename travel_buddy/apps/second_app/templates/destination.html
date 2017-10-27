@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+            <title>Items</title>
+                <style>
+                    body {
+                    padding:3%;
+                    }
+                    table {
+                        font-family: arial, sans-serif;
+                        border-collapse: collapse;
+                        
+                    }
+                    td, th {
+                        border: 1px solid #dddddd;
+                        text-align: left;
+                        padding: 8px;
+                    }
+
+                    tr:nth-child(even) {
+                        background-color: #dddddd;
+                    }
+                    input {
+                        margin: 1%;
+                        padding: 1% 2%;
+                    }
+                </style>
+    </head>
+    <body>
+        <a href="{% url 'first_app:success' %}">Home</a>
+        <a href="{% url 'first_app:index' %}">Logout</a>
+        <h1> {{ Trip.name }}</h1>
+        {% for user in item.product.all %}
+        <p>{{ user.first_name }}</p>
+        {% endfor %}
+        <h3>Other users' joining the trip</h3>
+        <h4>{{Blank}}Needs to be list of users inserted!!</h4>
+    </body>
+</html>

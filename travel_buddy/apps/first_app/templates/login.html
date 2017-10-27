@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <title>Login and Registration</title>
+  </head>
+  <style>
+    body {
+            padding:3%;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 70%;
+        }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    input {
+        margin: 1%;
+        padding: 1% 2%;
+    }
+  </style>
+  <body>
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <form action="register" method='POST'>
+      {% csrf_token %}
+    <table>
+      <tr>
+        <td>Registration</td>
+      </tr>
+      <tr>
+        <td>First Name: </td>
+        <td><input type="text" name="first_name" value=""></td>
+      </tr>
+      <tr>
+        <td>Last Name: </td>
+        <td><input type="text" name="last_name" value=""></td>
+      </tr>
+      <tr>
+        <td>Email: </td>
+        <td><input type="text" name="email" value=""></td>
+      </tr>
+      <tr>
+        <td>Password: </td>
+        <td><input type="text" name="password" value=""></td>
+      </tr>
+    <tr>
+        <td>*Password should be at least 8 characters</td>
+    </tr>
+      <tr>
+        <td>confirm pw: </td>
+        <td><input type="text" name="password_confirm" value=""></td>
+      </tr>
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+  <form action="login" method="POST">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>Login</td>
+      </tr>
+      <tr>
+        <td>Email: </td>
+        <td><input type="text" name="email" value=""></td>
+      </tr>
+      <tr>
+        <td>Password: </td>
+        <td><input type="text" name="password" value=""></td>
+      </tr>
+    </table>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
